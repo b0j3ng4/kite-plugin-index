@@ -1,0 +1,11 @@
+# Ruff configuration: https://docs.astral.sh/ruff/configuration/
+
+line-length = 100
+
+[lint]
+select = ["E", "F", "I", "W"]
+ignore = []
+
+[lint.per-file-ignores]
+# Tests need sys.path manipulation before importing scripts
+"tests/*.py" = ["E402", "E501"]

@@ -1,0 +1,23 @@
+# Editor and IDE files
+.vscode
+.cursor
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Registry repo is manifest-only by default.
+# Built artifacts should be hosted externally (for example GitHub Releases).
+artifacts/
+
+# Python
+__pycache__/
+.venv/
+.pytest_cache/
+.mypy_cache/
+
+# Pre-commit
+.pre-commit-cache/
+
+# Node (prettier, commitlint)
+node_modules/
