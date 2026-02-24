@@ -1,0 +1,5 @@
+{
+  "name": "vault-secret",
+  "description": "",
+  "types": ["secret"]
+}

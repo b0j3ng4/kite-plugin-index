@@ -1,4 +1,19 @@
 {
   "schema_version": 1,
-  "plugins": []
+  "plugins": [
+    {
+      "author": "_",
+      "name": "toml-emitter",
+      "description": "",
+      "types": ["emitter"],
+      "latest": "b261bcfd37b9e6edc6dd2dbbab25fce1c1d7c30c"
+    },
+    {
+      "author": "_",
+      "name": "vault-secret",
+      "description": "",
+      "types": ["secret"],
+      "latest": "b261bcfd37b9e6edc6dd2dbbab25fce1c1d7c30c"
+    }
+  ]
 }

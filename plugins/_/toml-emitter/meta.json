@@ -1,0 +1,5 @@
+{
+  "name": "toml-emitter",
+  "description": "",
+  "types": ["emitter"]
+}
