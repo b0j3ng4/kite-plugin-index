@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "name": "ron-emitter",
+    "type": "emitter",
+    "deterministic": true,
+    "network": false,
+    "formats": ["ron"]
+  },
+  "platforms": {
+    "darwin_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_ron-emitter_darwin_amd64.tar.gz",
+      "sha256": "5125f1cc89c1f4a4cbae767f000ead955afeef240f2d6021d2fb298be6e3e03f"
+    },
+    "darwin_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_ron-emitter_darwin_arm64.tar.gz",
+      "sha256": "e9c06be601e7d4053cc551d0c4265133e756aa89d5103d0c777cd07b89631e8c"
+    },
+    "linux_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_ron-emitter_linux_amd64.tar.gz",
+      "sha256": "a4596cc8ed88bc9fd1d3c695a8334b7f78ec2457c323129ad627ba813b8bee6f"
+    },
+    "linux_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_ron-emitter_linux_arm64.tar.gz",
+      "sha256": "a0af9642b02f6e19bd8e39d6c1cbd85e965a2d8a78aa90c94e679d1a3893e3ef"
+    },
+    "windows_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_ron-emitter_windows_amd64.zip",
+      "sha256": "682adfba53ce08a888a0204efd91acd280ef939fc0b4d55ad013ec6bec0fa458"
+    }
+  }
+}

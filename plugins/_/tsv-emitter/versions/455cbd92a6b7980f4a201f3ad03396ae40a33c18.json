@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "name": "tsv-emitter",
+    "type": "emitter",
+    "deterministic": true,
+    "network": false,
+    "formats": ["tsv"]
+  },
+  "platforms": {
+    "darwin_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_tsv-emitter_darwin_amd64.tar.gz",
+      "sha256": "b98ce708e0f6f83664e45a006313d93408042b3722792d425335228ca07654cf"
+    },
+    "darwin_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_tsv-emitter_darwin_arm64.tar.gz",
+      "sha256": "969637f99fc1c49544ef38f08efc2536242438eda546a158a0f6198c18f88fe2"
+    },
+    "linux_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_tsv-emitter_linux_amd64.tar.gz",
+      "sha256": "9d7a315f27851f2dcc383b90aef7ddbca9e6b8cc4314f9d60e01b57d12b3fc11"
+    },
+    "linux_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_tsv-emitter_linux_arm64.tar.gz",
+      "sha256": "3f1f9230921cd573e3e4484a262dbe15d98d19e1eedbcd5328bb43dbc8a9f759"
+    },
+    "windows_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_tsv-emitter_windows_amd64.zip",
+      "sha256": "c6cfb364feb5247fa1d3199b05910641b13489026c3d3a79fe96a136e058ed16"
+    }
+  }
+}

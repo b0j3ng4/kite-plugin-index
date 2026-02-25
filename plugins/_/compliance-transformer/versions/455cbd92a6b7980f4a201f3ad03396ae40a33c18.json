@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "name": "compliance-transformer",
+    "type": "transformer",
+    "deterministic": true,
+    "network": false
+  },
+  "platforms": {
+    "darwin_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_compliance-transformer_darwin_amd64.tar.gz",
+      "sha256": "1e8c08b9d63dbfc2f9942918b9835ccc510e890565ddf1ecb8157ef271c7ffa7"
+    },
+    "darwin_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_compliance-transformer_darwin_arm64.tar.gz",
+      "sha256": "6e8067c732a6c987ecbe525887ea69832cb14c26f04b8bd81fd1dcd961d73f64"
+    },
+    "linux_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_compliance-transformer_linux_amd64.tar.gz",
+      "sha256": "c03bf355b44c9e31f0d11dd8b47ff9005a058e5e1609d2e853edaa2a87d9cf65"
+    },
+    "linux_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_compliance-transformer_linux_arm64.tar.gz",
+      "sha256": "543ba434062363fc448c31154584e51dd55f9980b1287736628ea29a4045da72"
+    },
+    "windows_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_compliance-transformer_windows_amd64.zip",
+      "sha256": "a328327db9daf8207ea09177e76c01f85e84eeaee06e4931c90a4f9bb252c7ef"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "name": "compliance-transformer",
+  "description": "",
+  "types": ["transformer"]
+}

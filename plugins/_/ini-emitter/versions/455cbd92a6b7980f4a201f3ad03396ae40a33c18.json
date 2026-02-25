@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "name": "ini-emitter",
+    "type": "emitter",
+    "deterministic": true,
+    "network": false,
+    "formats": ["ini"]
+  },
+  "platforms": {
+    "darwin_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_ini-emitter_darwin_amd64.tar.gz",
+      "sha256": "a503927b712e6358786aab4fce4ebe376f396542976ce8cd966d4fea43ac9e20"
+    },
+    "darwin_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_ini-emitter_darwin_arm64.tar.gz",
+      "sha256": "9d46e310e7766d1b6a0dfb5017dc75ce7f68fcecf77d2e81f7785acf883a9455"
+    },
+    "linux_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_ini-emitter_linux_amd64.tar.gz",
+      "sha256": "30a40cfdfcc3c615cccc3c99cd76ab4e8400ee2ee925a37969ac61b97c8f7f7d"
+    },
+    "linux_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_ini-emitter_linux_arm64.tar.gz",
+      "sha256": "c65858ce40675740cc1287bee06f1b25392d7cc2a3013e774297c67e20762dd7"
+    },
+    "windows_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_ini-emitter_windows_amd64.zip",
+      "sha256": "2140e8b0780dc8c0be64c3ddf929d1e205754aba7f26f7ee76a33661ea22055d"
+    }
+  }
+}

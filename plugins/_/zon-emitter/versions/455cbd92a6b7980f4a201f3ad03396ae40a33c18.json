@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "name": "zon-emitter",
+    "type": "emitter",
+    "deterministic": true,
+    "network": false,
+    "formats": ["zon"]
+  },
+  "platforms": {
+    "darwin_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_zon-emitter_darwin_amd64.tar.gz",
+      "sha256": "a6e03e70324057e7f9250f0cbb3384341e6134263023fd774b5a6ac39e83b3a2"
+    },
+    "darwin_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_zon-emitter_darwin_arm64.tar.gz",
+      "sha256": "c68efa8f85fec96b0cb287d5885e08090348820f324993673ca472cb183743f8"
+    },
+    "linux_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_zon-emitter_linux_amd64.tar.gz",
+      "sha256": "4d63a1e96ec18226cd8fdb3ede3125cc7c0c57ef37c5986ccd0a0d9097aa8067"
+    },
+    "linux_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_zon-emitter_linux_arm64.tar.gz",
+      "sha256": "981bb0d39dd84e2df56eead9ade35e6c13e008b5005b90dc326d828dbc5e02ba"
+    },
+    "windows_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_zon-emitter_windows_amd64.zip",
+      "sha256": "be68dab55fc9781d3e5bfa70e3bb993b8fb2e92b1ac9981cbfd13ff02a16505d"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "name": "tsv-emitter",
+  "description": "",
+  "types": ["emitter"]
+}

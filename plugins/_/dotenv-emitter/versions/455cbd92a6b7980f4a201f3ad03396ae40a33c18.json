@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "name": "dotenv-emitter",
+    "type": "emitter",
+    "deterministic": true,
+    "network": false,
+    "formats": ["dotenv"]
+  },
+  "platforms": {
+    "darwin_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_dotenv-emitter_darwin_amd64.tar.gz",
+      "sha256": "67bd285517842f3a71ff434734d94f69377d823c13ab900f360e6389a8ffeee9"
+    },
+    "darwin_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_dotenv-emitter_darwin_arm64.tar.gz",
+      "sha256": "eb40d44e7cb934cd0b702c59275cbbe70b323c932b4be61145161cec60d64191"
+    },
+    "linux_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_dotenv-emitter_linux_amd64.tar.gz",
+      "sha256": "72a252ebee0034dc19657627fc9a9da4be0bcfc3a5afa8efb2078aa4174433f9"
+    },
+    "linux_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_dotenv-emitter_linux_arm64.tar.gz",
+      "sha256": "a1edad9f893c75c39dfac22b654c1a0b77e886c57db30575c0cd6bcc6eec8f8c"
+    },
+    "windows_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_dotenv-emitter_windows_amd64.zip",
+      "sha256": "9b16acd81a99648939473460ffbf8fc8f3a7f13aeb15f9746843354b4e05b32f"
+    }
+  }
+}

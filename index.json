@@ -1,19 +1,89 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "plugins": [
+    {
+      "author": "_",
+      "name": "compliance-transformer",
+      "description": "",
+      "types": ["transformer"],
+      "latest": "455cbd92a6b7980f4a201f3ad03396ae40a33c18"
+    },
+    {
+      "author": "_",
+      "name": "csv-emitter",
+      "description": "",
+      "types": ["emitter"],
+      "latest": "455cbd92a6b7980f4a201f3ad03396ae40a33c18"
+    },
+    {
+      "author": "_",
+      "name": "dotenv-emitter",
+      "description": "",
+      "types": ["emitter"],
+      "latest": "455cbd92a6b7980f4a201f3ad03396ae40a33c18"
+    },
+    {
+      "author": "_",
+      "name": "file-secret",
+      "description": "",
+      "types": ["secret"],
+      "latest": "455cbd92a6b7980f4a201f3ad03396ae40a33c18"
+    },
+    {
+      "author": "_",
+      "name": "ini-emitter",
+      "description": "",
+      "types": ["emitter"],
+      "latest": "455cbd92a6b7980f4a201f3ad03396ae40a33c18"
+    },
+    {
+      "author": "_",
+      "name": "ron-emitter",
+      "description": "",
+      "types": ["emitter"],
+      "latest": "455cbd92a6b7980f4a201f3ad03396ae40a33c18"
+    },
+    {
+      "author": "_",
+      "name": "sensitive-transformer",
+      "description": "",
+      "types": ["transformer"],
+      "latest": "455cbd92a6b7980f4a201f3ad03396ae40a33c18"
+    },
     {
       "author": "_",
       "name": "toml-emitter",
       "description": "",
       "types": ["emitter"],
-      "latest": "b261bcfd37b9e6edc6dd2dbbab25fce1c1d7c30c"
+      "latest": "455cbd92a6b7980f4a201f3ad03396ae40a33c18"
+    },
+    {
+      "author": "_",
+      "name": "tsv-emitter",
+      "description": "",
+      "types": ["emitter"],
+      "latest": "455cbd92a6b7980f4a201f3ad03396ae40a33c18"
     },
     {
       "author": "_",
       "name": "vault-secret",
       "description": "",
       "types": ["secret"],
-      "latest": "b261bcfd37b9e6edc6dd2dbbab25fce1c1d7c30c"
+      "latest": "455cbd92a6b7980f4a201f3ad03396ae40a33c18"
+    },
+    {
+      "author": "_",
+      "name": "xml-emitter",
+      "description": "",
+      "types": ["emitter"],
+      "latest": "455cbd92a6b7980f4a201f3ad03396ae40a33c18"
+    },
+    {
+      "author": "_",
+      "name": "zon-emitter",
+      "description": "",
+      "types": ["emitter"],
+      "latest": "455cbd92a6b7980f4a201f3ad03396ae40a33c18"
     }
   ]
 }

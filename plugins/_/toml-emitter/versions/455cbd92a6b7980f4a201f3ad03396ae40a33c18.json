@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "name": "toml-emitter",
+    "type": "emitter",
+    "deterministic": true,
+    "network": false,
+    "formats": ["toml"]
+  },
+  "platforms": {
+    "darwin_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_toml-emitter_darwin_amd64.tar.gz",
+      "sha256": "b0d5e6ab0a47cb7af5998ad334a2e6eb820db5ffa5f5457faf240fcac82b0884"
+    },
+    "darwin_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_toml-emitter_darwin_arm64.tar.gz",
+      "sha256": "021812df16ffa6b7aed06540f6a42811f4693bf9ad0a705233eb2d63519a1d6a"
+    },
+    "linux_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_toml-emitter_linux_amd64.tar.gz",
+      "sha256": "de8d6c376ba59a7d32d3146c8fcf9f1ddf7be1fa1daddb3bd1c957f338170d0c"
+    },
+    "linux_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_toml-emitter_linux_arm64.tar.gz",
+      "sha256": "4d3f57ee95e016f6ac9f2e2898fb319240fb9d8da6456e64b2cd2fa6fae3a95e"
+    },
+    "windows_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_toml-emitter_windows_amd64.zip",
+      "sha256": "cfacda43be2579df969cecd52faaccb14a63fc4ecc8219d65230b07b46690f00"
+    }
+  }
+}

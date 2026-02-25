@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "name": "csv-emitter",
+    "type": "emitter",
+    "deterministic": true,
+    "network": false,
+    "formats": ["csv"]
+  },
+  "platforms": {
+    "darwin_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_csv-emitter_darwin_amd64.tar.gz",
+      "sha256": "d6c497ccd0112853465a2445edf7a9356d5d59b0d9845d8d4ff0cf03f2f304e5"
+    },
+    "darwin_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_csv-emitter_darwin_arm64.tar.gz",
+      "sha256": "77b6d875b506566b6d8a3057882ce6a2cac162245f862be0a1a7495d2b371cbd"
+    },
+    "linux_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_csv-emitter_linux_amd64.tar.gz",
+      "sha256": "cf2b3a4ccf7b0582d5c94f49d4ae4949dca494b6adafc662f1ebd3ab7f55b75a"
+    },
+    "linux_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_csv-emitter_linux_arm64.tar.gz",
+      "sha256": "defa49362acabd2a546a5bba5014da91294c4652f9906e0071bb578d829e8273"
+    },
+    "windows_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_csv-emitter_windows_amd64.zip",
+      "sha256": "ea0e91b62ffd265a07f91f7951f8c834edfd90a278d59a5365db5dd30738e85b"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "name": "file-secret",
+    "type": "secret",
+    "deterministic": true,
+    "network": false,
+    "schemes": ["file"]
+  },
+  "platforms": {
+    "darwin_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_file-secret_darwin_amd64.tar.gz",
+      "sha256": "cd9338c54262396a9c897d5e84363229d32f3e92668e0ff8342d266c5cbba9b3"
+    },
+    "darwin_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_file-secret_darwin_arm64.tar.gz",
+      "sha256": "e9b70eba506cc3458757b1b8cfa4eb14d7d772397113f9834e866a01794abbe7"
+    },
+    "linux_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_file-secret_linux_amd64.tar.gz",
+      "sha256": "30567bdffd7802601f90833fa4225d3fb7f5f706833211efeb87f6aad85e64ef"
+    },
+    "linux_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_file-secret_linux_arm64.tar.gz",
+      "sha256": "cd080bfe5590431a432e87eaca5729b69b1d8fe972e4dcde71f4bff1c8aaa01f"
+    },
+    "windows_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_file-secret_windows_amd64.zip",
+      "sha256": "144a77b663a3a91832fbeb1835dba11688ab0a04cfdcb3f92b9c81dc32ebda0d"
+    }
+  }
+}

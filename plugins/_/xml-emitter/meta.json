@@ -1,0 +1,5 @@
+{
+  "name": "xml-emitter",
+  "description": "",
+  "types": ["emitter"]
+}

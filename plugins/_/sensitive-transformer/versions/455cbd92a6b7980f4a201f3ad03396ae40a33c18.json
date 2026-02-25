@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "name": "sensitive-transformer",
+    "type": "transformer",
+    "deterministic": true,
+    "network": false
+  },
+  "platforms": {
+    "darwin_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_sensitive-transformer_darwin_amd64.tar.gz",
+      "sha256": "5f0b8f2c149400e233d5fe08ed7a5b9d4163fde7b241176ed9f71fd5f89c181c"
+    },
+    "darwin_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_sensitive-transformer_darwin_arm64.tar.gz",
+      "sha256": "97225eb53e390d92a30c9696d7a6d503064e56b98e3e9be6b8ad99f5cf79af35"
+    },
+    "linux_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_sensitive-transformer_linux_amd64.tar.gz",
+      "sha256": "d45c4a234435ba0b2b1d762da6809120055ba19b2ebbd8ed173b0bf72fdc8318"
+    },
+    "linux_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_sensitive-transformer_linux_arm64.tar.gz",
+      "sha256": "904f2add6257331c3e2554730c2c927d8cdfb7b3e631fc9da2d7d2490a83c638"
+    },
+    "windows_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_sensitive-transformer_windows_amd64.zip",
+      "sha256": "02a9b15920c28881d4906b455e51332834a776b49fb10c6c0b3cf6c8a8c61315"
+    }
+  }
+}

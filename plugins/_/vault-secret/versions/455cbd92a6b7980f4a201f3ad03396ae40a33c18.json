@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "name": "vault-secret",
+    "type": "secret",
+    "deterministic": true,
+    "network": true,
+    "schemes": ["vault"]
+  },
+  "platforms": {
+    "darwin_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_vault-secret_darwin_amd64.tar.gz",
+      "sha256": "8cea2797fa86857b20afa298f1dcf4011abe8ebe28520b40add3cc5b284e0276"
+    },
+    "darwin_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_vault-secret_darwin_arm64.tar.gz",
+      "sha256": "cc612b79df9e73b39446563e08dbd303f8be36636cc9d4f787447fe57d0d83fc"
+    },
+    "linux_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_vault-secret_linux_amd64.tar.gz",
+      "sha256": "a2a307df0e61efdcdfddac6057027ebf494c80173add2e80b2f5638b916f2480"
+    },
+    "linux_arm64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_vault-secret_linux_arm64.tar.gz",
+      "sha256": "3205c0258e848dc02dd09606a0d4d2a43b94d05bd4d6636cd8e8233858f8964f"
+    },
+    "windows_amd64": {
+      "url": "https://github.com/b0j3ng4/kite-plugins/releases/download/v0.2.0/kite-plugins_vault-secret_windows_amd64.zip",
+      "sha256": "05b8f35a1b1ec7c1714b92cc75d06d9ee7f6bd525526ed2d5b5fbceae2805de7"
+    }
+  }
+}
