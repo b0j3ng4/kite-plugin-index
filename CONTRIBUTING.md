@@ -9,9 +9,10 @@ Thank you for your interest in contributing to the Kite Plugin Registry.
 1. **Read the guide**: See [docs/adding-plugins.md](docs/adding-plugins.md) for the full step-by-step process to add or update a plugin.
 2. **Use the helper script**: Run `python3 scripts/add_plugin.py --help` to scaffold new plugin entries and version files. The script creates the required directory structure, `meta.json`, version manifests, and updates `index.json`.
 3. **Validate locally**: Before opening a pull request, run:
-   - `python3 scripts/validate_registry.py` — validates JSON syntax and schema invariants
+   - `python3 scripts/validate_registry.py --fast` — validates JSON syntax and schema invariants (no network; used by pre-commit)
+   - `python3 scripts/validate_registry.py` — full validation including artifact download and SHA256 verification (run before PR)
    - `python3 -m unittest` — runs unit tests for the scripts
-   - `pre-commit run -a` — runs formatting and lint checks (after `pre-commit install`)
+   - `pre-commit run -a` — runs formatting and lint checks (after `pre-commit install`; uses `--fast` for registry validation)
 
 ### Commit messages
 
@@ -51,7 +52,8 @@ Types include: `feat`, `fix`, `doc`, `perf`, `refactor`, `style`, `test`, `chore
 2. **Manual validation**:
 
    ```bash
-   python3 scripts/validate_registry.py
+   python3 scripts/validate_registry.py --fast   # schema only, no network
+   python3 scripts/validate_registry.py          # full validation (downloads artifacts, verifies SHA256)
    python3 -m unittest
    ```
 

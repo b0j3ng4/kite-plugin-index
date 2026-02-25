@@ -1,15 +1,26 @@
 #!/usr/bin/env python3
 """
-Validate the Kite plugin registry: JSON syntax and schema invariants.
-Used by pre-commit and CI.
+Validate the Kite plugin registry: JSON syntax, schema invariants, and artifact integrity.
+
+- Schema validation: index.json, meta.json, version files (metadata, platforms, URL format).
+- Artifact validation (unless --fast): download each platform artifact and verify SHA256.
+
+Use --fast for pre-commit (no network, schema only). Run without --fast in CI for full validation.
 """
 
 from __future__ import annotations
 
+import argparse
+import hashlib
 import json
 import re
 import sys
 from pathlib import Path
+from urllib.request import Request, urlopen
+
+DOWNLOAD_TIMEOUT = 60
+CHUNK_SIZE = 65536
+USER_AGENT = "Kite-Plugin-Registry-Validator/1.0"
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 INDEX_PATH = REPO_ROOT / "index.json"
@@ -26,6 +37,11 @@ VALID_TYPES = frozenset({"validator", "transformer", "emitter", "diff", "secret"
 
 def err(msg: str) -> None:
     print(f"error: {msg}", file=sys.stderr)
+
+
+def log(msg: str) -> None:
+    """Print progress to stderr so stdout stays clean."""
+    print(msg, file=sys.stderr)
 
 
 def validate_index() -> list[str]:
@@ -174,29 +190,121 @@ def validate_version(path: Path) -> list[str]:
     return errors
 
 
-def main() -> int:
+def _fetch_and_verify_artifact(
+    version_path: Path, platform: str, url: str, expected_sha: str
+) -> str | None:
+    """Download artifact, compute SHA256, compare. Returns error message or None if OK."""
+    try:
+        req = Request(url, headers={"User-Agent": USER_AGENT})
+        with urlopen(req, timeout=DOWNLOAD_TIMEOUT) as resp:
+            h = hashlib.sha256()
+            while chunk := resp.read(CHUNK_SIZE):
+                h.update(chunk)
+            actual_sha = h.hexdigest()
+    except Exception as e:
+        return f"{version_path}: platforms.{platform}: {url}: {e}"
+
+    if actual_sha != expected_sha:
+        return (
+            f"{version_path}: platforms.{platform}: sha256 mismatch: \n"
+            f"\tgot {actual_sha} \n"
+            f"\texpected {expected_sha}\n"
+        )
+    return None
+
+
+def validate_artifacts() -> list[str]:
+    """Download each artifact, verify SHA256. Uses URL cache to avoid re-downloading."""
+    errors: list[str] = []
+    seen: dict[tuple[str, str], str | None] = {}  # (url, sha) -> error or None
+
+    version_paths = sorted(PLUGINS_DIR.rglob("versions/*.json"))
+    log(f"Verifying {len(version_paths)} version file(s)...")
+
+    for version_path in version_paths:
+        if not version_path.name.endswith(".json"):
+            continue
+        try:
+            data = json.loads(version_path.read_text())
+        except json.JSONDecodeError:
+            continue
+        platforms = data.get("platforms") or {}
+        if not isinstance(platforms, dict):
+            continue
+        for plat, art in platforms.items():
+            if plat not in VALID_PLATFORMS or not isinstance(art, dict):
+                continue
+            url = art.get("url")
+            sha = art.get("sha256")
+            if not url or not sha or not isinstance(url, str) or not isinstance(sha, str):
+                continue
+            if not url.endswith(ARCHIVE_URL_SUFFIXES) or not SHA256_RE.match(sha):
+                continue
+
+            key = (url, sha)
+            if key in seen:
+                if seen[key] is not None:
+                    errors.append(seen[key])
+                continue
+
+            rel = version_path.relative_to(REPO_ROOT)
+            log(f"  Downloading {plat} from {rel}...")
+            err_msg = _fetch_and_verify_artifact(version_path, plat, url, sha)
+            seen[key] = err_msg
+            if err_msg is not None:
+                errors.append(err_msg)
+
+    return errors
+
+
+def run_schema_validation() -> list[str]:
+    """Run index, meta, and version schema validation. No network."""
     all_errors: list[str] = []
-
+    log("Validating index.json...")
     all_errors.extend(validate_index())
-
     if not PLUGINS_DIR.exists():
-        if all_errors:
-            for e in all_errors:
-                err(e)
-            return 1
-        return 0
-
-    for meta_path in PLUGINS_DIR.rglob("meta.json"):
+        return all_errors
+    meta_paths = sorted(PLUGINS_DIR.rglob("meta.json"))
+    for meta_path in meta_paths:
+        log(f"Validating {meta_path.relative_to(REPO_ROOT)}...")
         all_errors.extend(validate_meta(meta_path))
-
-    for version_path in PLUGINS_DIR.rglob("versions/*.json"):
+    version_paths = sorted(PLUGINS_DIR.rglob("versions/*.json"))
+    for version_path in version_paths:
         if version_path.name.endswith(".json"):
+            log(f"Validating {version_path.relative_to(REPO_ROOT)}...")
             all_errors.extend(validate_version(version_path))
+    return all_errors
 
+
+def main(args: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Validate the Kite plugin registry. Use --fast for schema-only (no network)."
+    )
+    parser.add_argument(
+        "--fast",
+        action="store_true",
+        help="Skip artifact download/SHA verification; schema validation only",
+    )
+    parsed = parser.parse_args(args)
+
+    log("Schema validation...")
+    all_errors = run_schema_validation()
     if all_errors:
         for e in all_errors:
             err(e)
         return 1
+
+    if parsed.fast:
+        log("Done (--fast: skipped artifact verification).")
+        return 0
+
+    log("Artifact verification...")
+    all_errors.extend(validate_artifacts())
+    if all_errors:
+        for e in all_errors:
+            err(e)
+        return 1
+    log("All checks passed.")
     return 0
 
 

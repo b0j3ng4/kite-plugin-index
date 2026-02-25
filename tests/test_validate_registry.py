@@ -1,12 +1,15 @@
 """Unit tests for scripts/validate_registry.py."""
 
+import hashlib
 import json
 
 # Import by modifying sys.path so we can run from repo root
 import sys
 import tempfile
 import unittest
+from io import BytesIO
 from pathlib import Path
+from unittest import mock
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT / "scripts"))
@@ -23,8 +26,11 @@ class TestValidateRegistry(unittest.TestCase):
         vr.REPO_ROOT = self.root
         vr.INDEX_PATH = self.root / "index.json"
         vr.PLUGINS_DIR = self.root / "plugins"
+        self._log_patcher = mock.patch.object(vr, "log", lambda _: None)
+        self._log_patcher.start()
 
     def tearDown(self) -> None:
+        self._log_patcher.stop()
         self.tmp.cleanup()
 
     def test_index_missing(self) -> None:
@@ -175,6 +181,88 @@ class TestValidateRegistry(unittest.TestCase):
         )
         errors = vr.validate_version(path)
         self.assertTrue(any(".tar.gz" in e or "archive" in e for e in errors))
+
+    def test_main_fast_skips_artifacts(self) -> None:
+        digest = "a" * 40
+        (self.root / "index.json").write_text(
+            json.dumps({"schema_version": 2, "plugins": [
+                {"author": "_", "name": "x", "description": "", "types": ["emitter"], "latest": digest}
+            ]})
+        )
+        version_dir = self.root / "plugins" / "_" / "x" / "versions"
+        version_dir.mkdir(parents=True)
+        (version_dir / f"{digest}.json").write_text(
+            json.dumps({
+                "metadata": {"name": "x", "type": "emitter", "formats": ["toml"], "deterministic": True, "network": False},
+                "platforms": {"darwin_amd64": {"url": "https://example.com/x.tar.gz", "sha256": "0" * 64}},
+            })
+        )
+        rc = vr.main(["--fast"])
+        self.assertEqual(rc, 0)
+
+    def test_validate_artifacts_success(self) -> None:
+        data = b"test"
+        expected_sha = hashlib.sha256(data).hexdigest()
+        digest = "a" * 40
+        version_dir = self.root / "plugins" / "_" / "x" / "versions"
+        version_dir.mkdir(parents=True)
+        version_path = version_dir / f"{digest}.json"
+        version_path.write_text(
+            json.dumps({
+                "metadata": {"name": "x", "type": "emitter", "formats": ["toml"], "deterministic": True, "network": False},
+                "platforms": {"darwin_amd64": {"url": "https://example.com/x.tar.gz", "sha256": expected_sha}},
+            })
+        )
+        mock_resp = BytesIO(data)
+
+        def fake_urlopen(req, timeout=None):
+            return mock_resp
+
+        with mock.patch("validate_registry.urlopen", side_effect=fake_urlopen):
+            errors = vr.validate_artifacts()
+        self.assertEqual(errors, [])
+
+    def test_validate_artifacts_sha_mismatch(self) -> None:
+        data = b"test"
+        wrong_sha = "0" * 64
+        digest = "a" * 40
+        version_dir = self.root / "plugins" / "_" / "x" / "versions"
+        version_dir.mkdir(parents=True)
+        version_path = version_dir / f"{digest}.json"
+        version_path.write_text(
+            json.dumps({
+                "metadata": {"name": "x", "type": "emitter", "formats": ["toml"], "deterministic": True, "network": False},
+                "platforms": {"darwin_amd64": {"url": "https://example.com/x.tar.gz", "sha256": wrong_sha}},
+            })
+        )
+        mock_resp = BytesIO(data)
+
+        def fake_urlopen(req, timeout=None):
+            return mock_resp
+
+        with mock.patch("validate_registry.urlopen", side_effect=fake_urlopen):
+            errors = vr.validate_artifacts()
+        self.assertEqual(len(errors), 1)
+        self.assertIn("sha256 mismatch", errors[0])
+        self.assertIn(hashlib.sha256(data).hexdigest(), errors[0])
+        self.assertIn(wrong_sha, errors[0])
+
+    def test_validate_artifacts_download_error(self) -> None:
+        digest = "a" * 40
+        version_dir = self.root / "plugins" / "_" / "x" / "versions"
+        version_dir.mkdir(parents=True)
+        version_path = version_dir / f"{digest}.json"
+        version_path.write_text(
+            json.dumps({
+                "metadata": {"name": "x", "type": "emitter", "formats": ["toml"], "deterministic": True, "network": False},
+                "platforms": {"darwin_amd64": {"url": "https://example.com/x.tar.gz", "sha256": "0" * 64}},
+            })
+        )
+
+        with mock.patch("validate_registry.urlopen", side_effect=OSError("Connection refused")):
+            errors = vr.validate_artifacts()
+        self.assertEqual(len(errors), 1)
+        self.assertIn("Connection refused", errors[0])
 
 
 if __name__ == "__main__":
